@@ -40,6 +40,31 @@ ENTITY_DESCRIPTIONS = (
         name="3-fázový režim",
         icon="mdi:numeric-3-circle",
     ),
+    BinarySensorEntityDescription(
+        key="isBoostModeAvailable",
+        name="Boost mód dostupný",
+        icon="mdi:lightning-bolt-outline",
+    ),
+    BinarySensorEntityDescription(
+        key="isBoostModeActive",
+        name="Boost mód aktivní",
+        icon="mdi:lightning-bolt",
+    ),
+    BinarySensorEntityDescription(
+        key="isThreePhaseModeAvailable",
+        name="3-fázový mód dostupný",
+        icon="mdi:numeric-3-box-multiple-outline",
+    ),
+    BinarySensorEntityDescription(
+        key="isThreePhaseModeActive",
+        name="3-fázový mód aktivní",
+        icon="mdi:numeric-3-box",
+    ),
+    BinarySensorEntityDescription(
+        key="isChargingScheduleActive",
+        name="Plán nabíjení aktivní",
+        icon="mdi:calendar-clock",
+    ),
 )
 
 
