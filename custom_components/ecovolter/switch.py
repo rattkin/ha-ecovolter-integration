@@ -29,6 +29,16 @@ ENTITY_DESCRIPTIONS = (
         name="Nabíjení povoleno",
         icon="mdi:ev-station",
     ),
+    SwitchEntityDescription(
+        key="isBoostModeEnable",
+        name="Boost mód",
+        icon="mdi:lightning-bolt",
+    ),
+    SwitchEntityDescription(
+        key="isLocalPanelEnable",
+        name="Ovládání na zařízení",
+        icon="mdi:monitor-dashboard",
+    ),
 )
 
 

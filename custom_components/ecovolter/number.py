@@ -28,6 +28,32 @@ ENTITY_DESCRIPTIONS = (
         native_step=1,
         native_unit_of_measurement="A",
     ),
+    NumberEntityDescription(
+        key="boostTime",
+        name="Boost čas",
+        icon="mdi:timer-sand",
+        native_min_value=0,
+        native_max_value=43200,
+        native_step=60,
+        native_unit_of_measurement="s",
+    ),
+    NumberEntityDescription(
+        key="boostCurrent",
+        name="Boost proud",
+        icon="mdi:flash",
+        native_min_value=6,
+        native_max_value=32,
+        native_step=1,
+        native_unit_of_measurement="A",
+    ),
+    NumberEntityDescription(
+        key="kwhPrice",
+        name="Cena za kWh",
+        icon="mdi:currency-eur",
+        native_min_value=0,
+        native_max_value=100,
+        native_step=0.01,
+    ),
 )
 
 
