@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 ENTITY_DESCRIPTIONS = (
     NumberEntityDescription(
         key="targetCurrent",
-        name="Požadovaný výkon",
+        name="Výkon",
         icon="mdi:current-ac",
         native_min_value=6,
         native_max_value=16,
