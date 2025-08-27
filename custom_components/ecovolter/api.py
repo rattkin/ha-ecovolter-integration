@@ -31,7 +31,7 @@ class EcovolterApiClientAuthenticationError(
 def _verify_response_or_raise(response: aiohttp.ClientResponse) -> None:
     """Verify that the response is valid."""
     if response.status in (401, 403):
-        msg = "Authentication failed. Incorrect secret key."
+        msg = "Chyba ověřování, nesprávný tajný klíč."
         raise EcovolterApiClientAuthenticationError(
             msg,
         )
@@ -108,22 +108,22 @@ class EcovolterApiClient:
             return await response.json()
 
         except TimeoutError as exception:
-            msg = f"Timeout error fetching information - {exception}"
+            msg = f"Vypršel čas čekání na odpověď - {exception}"
             raise EcovolterApiClientCommunicationError(
                 msg,
             ) from exception
         except (aiohttp.ClientError, socket.gaierror) as exception:
-            msg = f"Error fetching information - {exception}"
+            msg = f"Chyba při stahování informací - {exception}"
             raise EcovolterApiClientCommunicationError(
                 msg,
             ) from exception
         except EcovolterApiClientAuthenticationError as exception:
-            msg = f"Authentication failed. Incorrect secret key. - {exception}"
+            msg = f"Chyba ověřování, nesprávný tajný klíč. - {exception}"
             raise EcovolterApiClientAuthenticationError(
                 msg,
             ) from exception
         except Exception as exception:  # pylint: disable=broad-except
-            msg = f"Something really wrong happened! - {exception}"
+            msg = f"Neznámá chyba! - {exception}"
             raise EcovolterApiClientError(
                 msg,
             ) from exception

@@ -1,7 +1,7 @@
 """Custom integration to integrate ecovolter with Home Assistant.
 
 For more details about this integration, please refer to
-https://github.com/samuelg0rd0n/ha-ecovolter-integration
+https://github.com/rattkin/ha-ecovolter-integration
 """
 
 from __future__ import annotations

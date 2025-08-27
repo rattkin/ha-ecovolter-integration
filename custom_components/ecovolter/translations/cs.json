@@ -2,9 +2,9 @@
   "config": {
     "step": {
       "user": {
-        "description": "Sériové číslo nabíječky naleznete na samotné nabíječce nebo v aplikaci EV-Manager (aplikace pro iOS/Android). Tajný klíč má ve výchozím nastavení stejnou hodnotu jako sériové číslo nabíječky. Pokud potřebujete pomoc s konfigurací, podívejte se sem: https://github.com/samuelg0rd0n/ha-ecovolter-integration",
+        "description": "Sériové číslo nabíječky naleznete na samotné nabíječce nebo v aplikaci EV-Manager (aplikace pro iOS/Android). Tajný klíč má ve výchozím nastavení stejnou hodnotu jako sériové číslo nabíječky. Pokud potřebujete pomoc s konfigurací, podívejte se sem: https://github.com/rattkin/ha-ecovolter-integration",
         "data": {
-          "serial_number": "Sériové číslo nabíječky",
+          "serial_number": "Sériové číslo nabíječky malými písmeny",
           "secret_key": "Tajný klíč (obvykle stejné jako seriové číslo)"
         }
       }

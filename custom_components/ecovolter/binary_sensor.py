@@ -25,19 +25,19 @@ if TYPE_CHECKING:
 ENTITY_DESCRIPTIONS = (
     BinarySensorEntityDescription(
         key="isCharging",
-        name="Is Charging?",
+        name="Nabíjení",
         icon="mdi:ev-station",
         device_class=BinarySensorDeviceClass.BATTERY_CHARGING,
     ),
     BinarySensorEntityDescription(
         key="isVehicleConnected",
-        name="Is Vehicle Connected?",
+        name="Vozidlo připojeno",
         icon="mdi:ev-plug-type2",
         device_class=BinarySensorDeviceClass.PLUG,
     ),
     BinarySensorEntityDescription(
         key="isThreePhaseModeEnable",
-        name="3-Phase Mode Enabled",
+        name="3-fázový režim",
         icon="mdi:numeric-3-circle",
     ),
 )

@@ -21,12 +21,12 @@ if TYPE_CHECKING:
 ENTITY_DESCRIPTIONS = (
     SwitchEntityDescription(
         key="isThreePhaseModeEnable",
-        name="3-Phase Mode Enabled",
+        name="3-fázový režim",
         icon="mdi:numeric-3-circle",
     ),
     SwitchEntityDescription(
         key="isChargingEnable",
-        name="Charging Enabled",
+        name="Nabíjení povoleno",
         icon="mdi:ev-station",
     ),
 )

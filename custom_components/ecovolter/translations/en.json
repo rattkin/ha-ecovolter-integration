@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "description": "Charger Serial Number can be found on the charger itself or in EV-Manager (iOS/Android app). Secret Key is by default the same value as Charger Serial Number. If you need help with the configuration have a look here: https://github.com/samuelg0rd0n/ha-ecovolter-integration",
+        "description": "Charger Serial Number can be found on the charger itself or in EV-Manager (iOS/Android app). Secret Key is by default the same value as Charger Serial Number. If you need help with the configuration have a look here: https://github.com/rattkin/ha-ecovolter-integration",
         "data": {
           "serial_number": "Charger Serial Number",
           "secret_key": "Secret Key"

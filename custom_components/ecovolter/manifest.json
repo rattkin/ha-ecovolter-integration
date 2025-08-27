@@ -1,11 +1,13 @@
 {
   "domain": "ecovolter",
   "name": "EcoVolter",
-  "codeowners": ["@samuelg0rd0n"],
+  "codeowners": [
+    "@rattkin"
+  ],
   "icon": "mdi:ev-plug-type2",
   "config_flow": true,
-  "documentation": "https://github.com/samuelg0rd0n/ha-ecovolter-integration",
+  "documentation": "https://github.com/rattkin/ha-ecovolter-integration",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/samuelg0rd0n/ha-ecovolter-integration/issues",
+  "issue_tracker": "https://github.com/rattkin/ha-ecovolter-integration/issues",
   "version": "0.1.0"
 }
