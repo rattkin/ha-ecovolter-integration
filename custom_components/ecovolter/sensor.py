@@ -19,10 +19,6 @@ if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-    from .coordinator import EcovolterDataUpdateCoordinator
-    from .data import IntegrationEcovolterConfigEntry
-
-# Key is used to get the value from the API
 ENTITY_DESCRIPTIONS = (
     SensorEntityDescription(
         key="actualPower",
@@ -130,43 +126,45 @@ ENTITY_DESCRIPTIONS = (
         native_unit_of_measurement="°C",
     ),
     SensorEntityDescription(
-        key="totalChargedEnergy",
-        name="Celková nabitá energie",
-        icon="mdi:battery-charging",
-        device_class=SensorDeviceClass.ENERGY,
-        state_class=SensorStateClass.TOTAL,
-        native_unit_of_measurement="kWh",
-    ),
-    SensorEntityDescription(
-        key="totalChargingCount",
-        name="Počet nabíjení",
-        icon="mdi:counter",
-        state_class=SensorStateClass.TOTAL,
-    ),
-    SensorEntityDescription(
-        key="totalChargingTime",
-        name="Celkový čas nabíjení",
-        icon="mdi:timer",
-        state_class=SensorStateClass.TOTAL,
-        native_unit_of_measurement="s",
-    ),
-    SensorEntityDescription(
-        key="maxInternalTemp",
-        name="Max vnitřní teplota",
-        icon="mdi:thermometer-chevron-up",
+        key="adapterTemperature_1",
+        name="Teplota adaptéru 1",
+        icon="mdi:thermometer",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
         native_unit_of_measurement="°C",
     ),
     SensorEntityDescription(
-        key="minInternalTemp",
-        name="Min vnitřní teplota",
-        icon="mdi:thermometer-chevron-down",
+        key="adapterTemperature_2",
+        name="Teplota adaptéru 2",
+        icon="mdi:thermometer",
         device_class=SensorDeviceClass.TEMPERATURE,
         state_class=SensorStateClass.MEASUREMENT,
         native_unit_of_measurement="°C",
     ),
-    # Add more for adapter/relay temps if needed
+    SensorEntityDescription(
+        key="adapterTemperature_3",
+        name="Teplota adaptéru 3",
+        icon="mdi:thermometer",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement="°C",
+    ),
+    SensorEntityDescription(
+        key="relayTemperature_1",
+        name="Teplota relé 1",
+        icon="mdi:thermometer",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement="°C",
+    ),
+    SensorEntityDescription(
+        key="relayTemperature_2",
+        name="Teplota relé 2",
+        icon="mdi:thermometer",
+        device_class=SensorDeviceClass.TEMPERATURE,
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement="°C",
+    ),
 )
 
 
@@ -209,13 +207,29 @@ class IntegrationEcovolterSensor(IntegrationEcovolterEntity, SensorEntity):
     @property
     def native_value(self):
         """Return the native value of the sensor."""
-        value = self.coordinator.data.get("status", {}).get(self.entity_description.key)
-        
-        # Handle different data types and conversions
+        status = self.coordinator.data.get("status", {})
+        # Internal temperature
+        if self.entity_description.key == "internalTemperature":
+            temps = status.get("temperatures", {})
+            return temps.get("internal")
+        # Adapter temperatures
+        if self.entity_description.key.startswith("adapterTemperature_"):
+            temps = status.get("temperatures", {}).get("adapter", [])
+            idx = int(self.entity_description.key.split("_")[1]) - 1
+            if idx < len(temps):
+                return temps[idx]
+            return None
+        # Relay temperatures
+        if self.entity_description.key.startswith("relayTemperature_"):
+            temps = status.get("temperatures", {}).get("relay", [])
+            idx = int(self.entity_description.key.split("_")[1]) - 1
+            if idx < len(temps):
+                return temps[idx]
+            return None
+        # Default: původní chování
+        value = status.get(self.entity_description.key)
         if value is None:
             return None
-            
-        # Convert to float for numeric sensors
         try:
             return float(value)
         except (ValueError, TypeError):
