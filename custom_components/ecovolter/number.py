@@ -42,7 +42,7 @@ ENTITY_DESCRIPTIONS = (
         name="Boost proud",
         icon="mdi:flash",
         native_min_value=6,
-        native_max_value=32,
+        native_max_value=16,
         native_step=1,
         native_unit_of_measurement="A",
     ),
@@ -87,6 +87,10 @@ class IntegrationEcovolterNumber(IntegrationEcovolterEntity, NumberEntity):
             f"{coordinator.config_entry.entry_id}_{camel_to_snake(entity_description.key)}"
         )
         self._attr_name = entity_description.name
+        # Dynamically set max value for current fields
+        max_current = getattr(coordinator.config_entry.runtime_data, "max_current", 16)
+        if entity_description.key in ("targetCurrent", "boostCurrent"):
+            self._attr_native_max_value = max_current
 
     @property
     def suggested_object_id(self) -> str:

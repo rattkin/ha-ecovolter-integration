@@ -37,7 +37,7 @@ ENTITY_DESCRIPTIONS = (
         name="Nabitá energie",
         icon="mdi:battery-charging",
         device_class=SensorDeviceClass.ENERGY,
-        state_class=SensorStateClass.MEASUREMENT,
+        state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement="kWh",
     ),
     SensorEntityDescription(
