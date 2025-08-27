@@ -1,73 +1,80 @@
-# EcoVolter Home Assistant Integration
+# EcoVolter Home Assistant Integrace
 
-A Home Assistant integration for [EcoVolter II EV chargers](https://www.ecovolter.com/) that enables you to locally control basic charging functions such as turning charging on and off, setting target current, and monitoring whether your vehicle is plugged in or actively charging. It uses their [API](https://asnplus.github.io/revc-charger-local-api-documentation/).
+Integrace Home Assistant pro [nabíječky elektromobilů EcoVolter II](https://www.ecovolter.com/), která umožňuje lokálně ovládat základní funkce nabíjení, jako je zapínání a vypínání nabíjení, nastavení cílového proudu a sledování, zda je vaše vozidlo zapojeno do zásuvky nebo se aktivně nabíjí. Využívá jejich [API](https://asnplus.github.io/revc-charger-local-api-documentation/).
 
-**Only EcoVolter II (2nd generation) with local control is supported by this integration.** If you have 1st generation with cloud API using iXmanager app, you can use [iXmanager Integration](https://github.com/kubacizek/home-assistant-ixmanager).
+5% sleva na nabíječky https://www.nabijelektromobil.cz/ s kódem TYGRI nebo TYGRISK (pro nákup v EUR)
 
-Wi-Fi connection is required. If your EcoVolter doesn't have wi-fi enabled you can pay to unlock it.
+**Tato integrace podporuje pouze EcoVolter II (2. generace) s lokálním ovládáním.** Pokud máte 1. generaci s cloudovým API pomocí aplikace iXmanager, můžete použít [integraci iXmanager](https://github.com/kubacizek/home-assistant-ixmanager).
 
-I originally created this integration for my own use, but thought others might find it helpful as well. Enjoy! :-)
+Je vyžadováno připojení k Wi-Fi. Pokud váš EcoVolter nemá povolenou Wi-Fi, můžete si jej odemknout za poplatek.
 
-## Installation
+Tuto integraci původně vytvořil https://github.com/samuelg0rd0n/ha-ecovolter-integration
 
-### Option 1: HACS (Recommended)
+## Instalace
 
-1. Make sure you have [HACS](https://hacs.xyz/) installed in your Home Assistant instance
-2. Add this repository as a custom repository in HACS:
-   - Go to HACS → Settings → Repositories
-   - Click the "+" button
-   - Add repository: `samuelg0rd0n/ha-ecovolter-integration`
-   - Category: Integration
-3. Search for "EcoVolter" in HACS → Integrations
-4. Click "Download" and then "Restart Home Assistant"
-5. Add the integration via Settings → Devices & Services → Add Integration → Search for "EcoVolter"
+### Možnost 1: HACS (doporučeno)
 
-### Option 2: Manual Installation
+1. Ujistěte se, že máte ve své instanci Home Assistant nainstalován [HACS](https://hacs.xyz/).
+2. Přidejte tento repozitář jako vlastní repozitář v HACS:
+- Přejděte do HACS → Nastavení → Repozitáře.
+- Klikněte na tlačítko „+“.
+- Přidejte repozitář: `rattkin/ha-ecovolter-integration`.
+- Kategorie: Integrace.
+3. Vyhledejte „EcoVolter“ v HACS → Integrace.
+4. Klikněte na „Stáhnout“ a poté na „Restartovat Home Assistant“.
+5. Přidejte integraci přes Nastavení → Zařízení a služby → Přidat integraci → Vyhledejte „EcoVolter“.
 
-1. Download or clone this repository
-2. Copy the `custom_components/ecovolter` folder to your Home Assistant `custom_components` directory
-3. Restart Home Assistant
-4. Add the integration via Settings → Devices & Services → Add Integration → Search for "EcoVolter"
+### Možnost 2: Ruční instalace
 
-## Configuration
+1. Stáhněte nebo naklonujte toto úložiště
 
-1. In Home Assistant, go to **Settings** → **Devices & Services**
-2. Click **Add Integration**
-3. Search for **"EcoVolter"** and select it
-4. Enter your EcoVolter charger's serial number. This can be found in the EV-Manager (iOS/Android app) or directly printed on the charger.
-5. Enter your charger's secret key. By default this is the same as your serial number. As of August 2025, EcoVolter says that the option to set secret key will be added to EV-Manager in the upcoming versions.
-6. Click **Submit**
+2. Zkopírujte složku `custom_components/ecovolter` do adresáře `custom_components` vašeho Home Assistant
 
-## Features
+3. Restartujte Home Assistant
 
-### Binary Sensors
-- **Is Charging**: Shows whether the charger is actively charging your vehicle
-- **Is Vehicle Connected**: Indicates if a vehicle is plugged into the charger
-- **3-Phase Mode Enabled**: Shows the current phase mode status
+4. Přidejte integraci přes Nastavení → Zařízení a služby → Přidat integraci → Vyhledejte „EcoVolter“
 
-### Sensors
-- **Actual Power**: Real-time power consumption in watts
+## Konfigurace
 
-### Controls
-- **Start/Stop Charging**: Control charging sessions
-- **Set Target Current**: Adjust the charging current (6A to 16A)
-- **3-Phase Mode Control**: Enable or disable 3-phase charging mode
+1. V aplikaci Home Assistant přejděte do **Nastavení** → **Zařízení a služby**
+2. Klikněte na **Přidat integraci**
+3. Vyhledejte **"EcoVolter"** a vyberte ho
+4. Zadejte sériové číslo vaší nabíječky EcoVolter. Toto číslo najdete v aplikaci EV-Manager (aplikace pro iOS/Android) nebo je vytištěno přímo na nabíječce.
 
-## Requirements
+5. Zadejte tajný klíč vaší nabíječky. Ve výchozím nastavení je totožný s vaším sériovým číslem. EcoVolter uvádí, že od srpna 2025 bude v nadcházejících verzích aplikace EV-Manager přidána možnost nastavení tajného klíče.
 
-- Home Assistant 2023.8.0 or newer
-- EcoVolter II (2nd generation) EV charger with network connectivity
-- mDNS support in your setup
+6. Klikněte na **Odeslat**
 
-## Troubleshooting
+## Funkce
 
-- **Integration not found**: Make sure you've restarted Home Assistant after installation
-- **Connection failed**: Verify your charger's serial number and network connectivity
-- **Authentication error**: Check your charger's secret key
+### Binární senzory
+- **Nabíjí se**: Zobrazuje, zda nabíječka aktivně nabíjí vaše vozidlo
+- **Je vozidlo připojeno**: Zobrazuje, zda je vozidlo připojeno k nabíječce
+- **3fázový režim povolen**: Zobrazuje aktuální stav fázového režimu
 
-## Support
+### Senzory
+- **Skutečný výkon**: Spotřeba energie v reálném čase ve wattech
 
-If you encounter any issues or have questions, please:
-1. Check the troubleshooting section above
-2. Review the Home Assistant logs for error messages
-3. Open an issue on this repository with detailed information about your setup
+### Ovládání
+- **Spuštění/zastavení nabíjení**: Ovládání nabíjecích relací
+- **Nastavení cílového proudu**: Úprava nabíjecího proudu (6 A až 16 A)
+- **Řízení 3fázového režimu**: Povolení nebo zakázání 3fázového režimu nabíjení
+
+## Požadavky
+
+- Home Assistant 2023.8.0 nebo novější
+- Nabíječka pro elektromobily EcoVolter II (2. generace) s připojením k síti
+- Podpora mDNS ve vašem nastavení
+
+## Řešení problémů
+
+- **Integrace nenalezena**: Ujistěte se, že jste po instalaci restartovali Home Assistant
+- **Připojení selhalo**: Ověřte sériové číslo a připojení k síti vaší nabíječky
+- **Chyba ověřování**: Zkontrolujte tajný klíč vaší nabíječky
+
+## Podpora
+
+Pokud narazíte na nějaké problémy nebo máte dotazy, prosím:
+1. Zkontrolujte výše uvedenou část pro řešení problémů
+2. Zkontrolujte protokoly Home Assistant, zda neobsahují chybové zprávy
+3. Otevřete v tomto repozitáři zprávu o problému s podrobnými informacemi o vašem nastavení
