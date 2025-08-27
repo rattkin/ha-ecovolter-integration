@@ -26,7 +26,7 @@ if TYPE_CHECKING:
 ENTITY_DESCRIPTIONS = (
     SensorEntityDescription(
         key="actualPower",
-        name="Actual Power",
+        name="Nabíjecí výkon",
         icon="mdi:flash",
         device_class=SensorDeviceClass.POWER,
         state_class=SensorStateClass.MEASUREMENT,
