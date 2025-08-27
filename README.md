@@ -8,6 +8,8 @@ Integrace Home Assistant pro [nabíječky elektromobilů EcoVolter II](https://w
 
 Je vyžadováno připojení k Wi-Fi. Pokud váš EcoVolter nemá povolenou Wi-Fi, můžete si jej odemknout za poplatek.
 
+Video návod: https://youtu.be/TIFlB8nDvhU
+
 Tuto integraci původně vytvořil https://github.com/samuelg0rd0n/ha-ecovolter-integration
 
 ## Instalace
